@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import pixel font for 8-bit aesthetic */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Custom 8-bit styling */
+@layer base {
+  body {
+    font-family: 'Press Start 2P', monospace;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Vintage CRT scanlines effect */
+@layer components {
+  .crt-effect {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .crt-effect::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      transparent 50%,
+      rgba(0, 0, 0, 0.1) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 10;
+  }
+  
+  .pixel-border {
+    border: 2px solid #4a4a4a;
+    box-shadow: 
+      inset 2px 2px 0px rgba(255, 255, 255, 0.2),
+      inset -2px -2px 0px rgba(0, 0, 0, 0.4),
+      4px 4px 0px rgba(0, 0, 0, 0.8);
+  }
+  
+  .pixel-button {
+    border: 2px solid #4a4a4a;
+    box-shadow: 
+      inset 2px 2px 0px rgba(255, 255, 255, 0.3),
+      inset -2px -2px 0px rgba(0, 0, 0, 0.5),
+      2px 2px 0px rgba(0, 0, 0, 0.6);
+    transition: all 0.1s ease;
+    min-width: 64px;
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .pixel-button:active {
+    transform: translateY(2px);
+    box-shadow: 
+      inset 2px 2px 0px rgba(255, 255, 255, 0.1),
+      inset -2px -2px 0px rgba(0, 0, 0, 0.7),
+      1px 1px 0px rgba(0, 0, 0, 0.8);
+  }
+  
+  .led-display {
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    border: 3px solid #333;
+    box-shadow: 
+      inset 3px 3px 0px rgba(0, 0, 0, 0.8),
+      inset -3px -3px 0px rgba(255, 255, 255, 0.1),
+      6px 6px 0px rgba(0, 0, 0, 0.9);
+  }
+  
+  .led-text {
+    color: #00ff00;
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+    font-family: 'Press Start 2P', monospace;
+    letter-spacing: 2px;
+  }
+  
+  .calculator-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    width: fit-content;
+    margin: 0 auto;
+  }
+}
+
+/* Custom scrollbar for vintage feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2a2a2a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4a4a4a;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6a6a6a;
+}
