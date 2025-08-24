@@ -120,12 +120,12 @@ export default function Calculator() {
       <div className="led-display mb-6 p-6 rounded">
         {/* Operation Display */}
         {operationDisplay && (
-          <div className="led-text text-right text-lg font-mono min-h-[1.5rem] mb-2 opacity-70">
+          <div className="led-text-small text-right min-h-[1.5rem] mb-2 opacity-70">
             {operationDisplay}
           </div>
         )}
         {/* Main Display */}
-        <div className="led-text text-right text-6xl font-mono min-h-[4rem] leading-none">
+        <div className="led-text text-right min-h-[4rem] leading-none">
           {display}
         </div>
       </div>

@@ -83,6 +83,17 @@
     text-shadow: 0 0 15px #00ff00, 0 0 30px #00ff00;
     font-family: 'Press Start 2P', monospace;
     letter-spacing: 3px;
+    font-size: clamp(1rem, 8vw, 4rem);
+    line-height: 1.2;
+  }
+  
+  .led-text-small {
+    color: #00ff00;
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+    font-family: 'Press Start 2P', monospace;
+    letter-spacing: 2px;
+    font-size: clamp(0.5rem, 4vw, 1.5rem);
+    line-height: 1.2;
   }
   
   .calculator-grid {

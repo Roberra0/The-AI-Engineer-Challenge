@@ -64,9 +64,26 @@ This calculator features:
 - **Tailwind CSS** - For rapid styling and custom components
 - **Press Start 2P** - The ultimate 8-bit font
 
+## 🤖 AI Math Assistant Setup
+
+The calculator now includes an "Ask a Mathematician" feature powered by OpenAI! To enable this:
+
+1. **Get an OpenAI API key** from [https://platform.openai.com/api-keys](https://platform.openai.com/api-keys)
+
+2. **Create a `.env.local` file** in the frontend directory:
+   ```bash
+   OPENAI_API_KEY=your_actual_api_key_here
+   ```
+
+3. **Restart the development server** after adding the API key
+
+The AI assistant will help with math questions, provide explanations, and solve problems step-by-step!
+
 ## 🎯 Ready to Deploy?
 
 This calculator is **Vercel-ready** and can be deployed with just a few clicks! The project structure is optimized for Vercel deployment.
+
+**For Vercel deployment:** Add your `OPENAI_API_KEY` as an environment variable in your Vercel project settings.
 
 ---
 
