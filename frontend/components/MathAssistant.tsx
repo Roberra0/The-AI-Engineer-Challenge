@@ -15,6 +15,7 @@ export default function MathAssistant() {
     setResponse('') // Clear previous response
 
     try {
+      console.log('Sending request to /api/math-assistant with prompt:', prompt)
       const res = await fetch('/api/math-assistant', {
         method: 'POST',
         headers: {
@@ -22,10 +23,13 @@ export default function MathAssistant() {
         },
         body: JSON.stringify({ prompt }),
       })
+      
+      console.log('Response status:', res.status)
+      console.log('Response headers:', Object.fromEntries(res.headers.entries()))
 
       if (!res.ok) {
-        const errorData = await res.json()
-        throw new Error(errorData.error || 'Failed to get response')
+        const errorData = await res.json().catch(() => ({ error: 'Failed to parse error response' }))
+        throw new Error(errorData.error || `HTTP ${res.status}: Failed to get response`)
       }
 
       const data = await res.json()
