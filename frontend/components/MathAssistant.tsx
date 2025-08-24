@@ -40,9 +40,7 @@ export default function MathAssistant() {
   return (
     <div className="mt-8 w-full max-w-2xl mx-auto">
       <div className="pixel-border bg-gray-800 p-6 rounded-lg">
-        <h2 className="text-green-400 mb-4 led-text text-center">
-          ASK A MATHEMATICIAN
-        </h2>
+
         
         <form onSubmit={handleSubmit} className="mb-4">
           <div className="flex gap-2">
@@ -51,22 +49,22 @@ export default function MathAssistant() {
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
               placeholder="Ask me anything about math..."
-              className="flex-1 math-input text-white px-4 py-3 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-green-400 placeholder-gray-400"
+              className="flex-1 math-input text-white px-4 py-3 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-yellow-400 placeholder-white bg-gray-600"
               disabled={isLoading}
             />
             <button
               type="submit"
               disabled={isLoading || !prompt.trim()}
-              className="pixel-button bg-green-600 text-white px-6 py-3 text-sm font-bold hover:bg-green-500 active:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed min-w-[80px]"
+              className="pixel-button bg-yellow-600 text-black px-6 py-3 text-sm font-bold hover:bg-yellow-500 active:bg-yellow-700 disabled:opacity-50 disabled:cursor-not-allowed min-w-[120px]"
             >
-              {isLoading ? 'ASKING...' : 'ASK'}
+              {isLoading ? 'ASKING...' : 'ASK A MATHEMATICIAN'}
             </button>
           </div>
         </form>
 
         {response && (
           <div className="led-display p-4 rounded">
-            <div className="led-text-small text-left whitespace-pre-wrap">
+            <div className="led-text-small text-left whitespace-pre-wrap leading-relaxed">
               {response}
             </div>
           </div>

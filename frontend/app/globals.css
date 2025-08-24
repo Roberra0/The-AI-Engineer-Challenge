@@ -96,6 +96,15 @@
     line-height: 1.2;
   }
   
+  .title-text {
+    color: #fbbf24;
+    text-shadow: 0 0 8px #fbbf24, 0 0 16px #fbbf24;
+    font-family: 'Press Start 2P', monospace;
+    letter-spacing: 1px;
+    font-size: clamp(0.4rem, 3vw, 1.2rem);
+    line-height: 1.3;
+  }
+  
   .calculator-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -106,11 +115,39 @@
   
   .math-input {
     background: linear-gradient(135deg, #4a4a4a 0%, #3a3a3a 100%);
-    border: 2px solid #4a4a4a;
+    border: 2px solid #666;
     box-shadow: 
       inset 2px 2px 0px rgba(255, 255, 255, 0.1),
       inset -2px -2px 0px rgba(0, 0, 0, 0.3),
       2px 2px 0px rgba(0, 0, 0, 0.6);
+  }
+  
+  .math-input:focus {
+    border-color: #fbbf24;
+    box-shadow: 
+      inset 2px 2px 0px rgba(255, 255, 255, 0.1),
+      inset -2px -2px 0px rgba(0, 0, 0, 0.3),
+      2px 2px 0px rgba(0, 0, 0, 0.6),
+      0 0 0 2px rgba(251, 191, 36, 0.3);
+  }
+  
+  .math-input {
+    color: white !important;
+  }
+  
+  .math-input::placeholder {
+    color: white !important;
+    opacity: 0.8;
+  }
+  
+  .math-input::-webkit-input-placeholder {
+    color: white !important;
+    opacity: 0.8;
+  }
+  
+  .math-input::-moz-placeholder {
+    color: white !important;
+    opacity: 0.8;
   }
 }
 
