@@ -24,14 +24,16 @@ export default function MathAssistant() {
       })
 
       if (!res.ok) {
-        throw new Error('Failed to get response')
+        const errorData = await res.json()
+        throw new Error(errorData.error || 'Failed to get response')
       }
 
       const data = await res.json()
       setResponse(data.response)
     } catch (error) {
       console.error('Error:', error)
-      setResponse('Sorry, I encountered an error. Please check that your OpenAI API key is configured in .env.local file.')
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred'
+      setResponse(`Error: ${errorMessage}`)
     } finally {
       setIsLoading(false)
     }
