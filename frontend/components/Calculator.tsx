@@ -9,12 +9,14 @@ export default function Calculator() {
   const [previousValue, setPreviousValue] = useState<number | null>(null)
   const [operation, setOperation] = useState<Operation>('')
   const [waitingForOperand, setWaitingForOperand] = useState(false)
+  const [operationDisplay, setOperationDisplay] = useState('')
 
   const clearAll = () => {
     setDisplay('0')
     setPreviousValue(null)
     setOperation('')
     setWaitingForOperand(false)
+    setOperationDisplay('')
   }
 
   const inputDigit = (digit: string) => {
@@ -43,16 +45,28 @@ export default function Calculator() {
 
     if (previousValue === null) {
       setPreviousValue(inputValue)
+      setOperationDisplay(`${inputValue} ${getOperationSymbol(nextOperation)}`)
     } else if (operation) {
       const currentValue = previousValue || 0
       const newValue = calculate(currentValue, inputValue, operation)
 
       setDisplay(String(newValue))
       setPreviousValue(newValue)
+      setOperationDisplay(`${newValue} ${getOperationSymbol(nextOperation)}`)
     }
 
     setWaitingForOperand(true)
     setOperation(nextOperation)
+  }
+
+  const getOperationSymbol = (op: Operation): string => {
+    switch (op) {
+      case '+': return '+'
+      case '-': return '-'
+      case '*': return '×'
+      case '/': return '÷'
+      default: return ''
+    }
   }
 
   const calculate = (firstValue: number, secondValue: number, operation: Operation): number => {
@@ -80,6 +94,7 @@ export default function Calculator() {
     setPreviousValue(null)
     setOperation('')
     setWaitingForOperand(true)
+    setOperationDisplay('')
   }
 
   const handlePercent = () => {
@@ -102,8 +117,15 @@ export default function Calculator() {
   return (
     <div className="crt-effect pixel-border bg-gray-800 p-6 rounded-lg">
       {/* LED Display */}
-      <div className="led-display mb-6 p-4 rounded">
-        <div className="led-text text-right text-2xl font-mono min-h-[2rem]">
+      <div className="led-display mb-6 p-6 rounded">
+        {/* Operation Display */}
+        {operationDisplay && (
+          <div className="led-text text-right text-lg font-mono min-h-[1.5rem] mb-2 opacity-70">
+            {operationDisplay}
+          </div>
+        )}
+        {/* Main Display */}
+        <div className="led-text text-right text-6xl font-mono min-h-[4rem] leading-none">
           {display}
         </div>
       </div>
