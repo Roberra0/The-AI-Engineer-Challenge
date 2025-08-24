@@ -103,6 +103,15 @@
     width: fit-content;
     margin: 0 auto;
   }
+  
+  .math-input {
+    background: linear-gradient(135deg, #4a4a4a 0%, #3a3a3a 100%);
+    border: 2px solid #4a4a4a;
+    box-shadow: 
+      inset 2px 2px 0px rgba(255, 255, 255, 0.1),
+      inset -2px -2px 0px rgba(0, 0, 0, 0.3),
+      2px 2px 0px rgba(0, 0, 0, 0.6);
+  }
 }
 
 /* Custom scrollbar for vintage feel */
